@@ -5,14 +5,14 @@ import re
 from bs4 import BeautifulSoup
 
 # switching to current running python files directory
-os.chdir('\\'.join(__file__.split('/')[:-1]))
+os.chdir( os.path.dirname(__file__) )
 
 # function to get the html of the page
 def get_page():
 	global url
 	url = input('Enter url of a medium article: ')
 	# handling possible error
-	if not re.match(r'https?://medium.com/',url):
+	if not re.match(r'https://.*medium.com/',url):
 		print('Please enter a valid website, or make sure it is a medium article')
 		sys.exit(1)
 	res = requests.get(url)
